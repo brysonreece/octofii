@@ -1,0 +1,112 @@
+<h3>{{ _('Email Notifier Configuration') }}</h3>
+
+<form class="form-horizontal">
+
+	<div class="control-group">
+		<div class="controls" title="{{ _('You can toggle whether notifications are enabled while a print is in progress.') }}">
+			<label class="checkbox">
+				<input type="checkbox" data-bind="checked: settings.plugins.emailnotifier.enabled" /> {{ _('Enabled') }}
+			</label>
+		</div>
+	</div>
+
+    <div class="control-group" title="{{ _('The name of the email recipient.') }}">
+            <label class="control-label">{{ _('Recipient Name') }}</label>
+            <div class="controls">
+                    <input type="text" class="input-block-level" data-bind="value: settings.plugins.emailnotifier.recipient_name">
+            </div>
+    </div>
+
+	<div class="control-group" title="{{ _('Print complete notifications will be sent to this email address.') }}">
+		<label class="control-label">{{ _('Recipient Address (comma separated)') }}</label>
+		<div class="controls">
+			<input type="text" class="input-block-level" data-bind="value: settings.plugins.emailnotifier.recipient_address">
+		</div>
+	</div>
+
+	<h4>{{ _('SMTP Settings') }}</h4>
+	
+	<p>{{ _('Store your SMTP password securely using your system <a href="https://pypi.python.org/pypi/keyring#what-is-python-keyring-lib">keyring</a>. You can store your password from a Python prompt on your OctoPrint system <a href="https://github.com/kootenpv/yagmail#username-and-password">using <code>yagmail.register</code></a>.') }}</p>
+	
+	<div class="control-group" title="{{ _('SMTP server.') }}">
+		<label class="control-label">{{ _('Server') }}</label>
+		<div class="controls">
+			<input type="text" class="input-block-level" data-bind="value: settings.plugins.emailnotifier.mail_server">
+		</div>	
+	</div>
+	
+	<div class="control-group" title="{{ _('SMTP username. An associated password must be found in the system keyring.') }}">
+		<label class="control-label">{{ _('Username') }}</label>
+		<div class="controls">
+			<input type="text" class="input-block-level" data-bind="value: settings.plugins.emailnotifier.mail_username">
+		</div>
+	</div>
+	
+	<div class="control-group" title="{{ _('SMTP useralias. This will show in the FROM Header of your Mail.') }}">
+		<label class="control-label">{{ _('Useralias') }}</label>
+		<div class="controls">
+			<input type="text" class="input-block-level" data-bind="value: settings.plugins.emailnotifier.mail_useralias">
+		</div>
+	</div>
+	
+	<h4>{{ _('Message Content') }}</h4>
+	
+	<p>{{ _('The email title and body templates may contain the tags <code>{recipient_name}</code> <code>{filename}</code> and <code>{elapsed_time}</code>.') }}</p>
+	
+	<h5>{{ _('Print Started') }}</h5>
+
+		<div class="control-group" title="{{ _('Subject of Print Started notification email.') }}">
+			<label class="control-label">{{ _('Title') }}</label>
+			<div class="controls">
+				<input type="text" class="input-block-level" data-bind="value: settings.plugins.emailnotifier.printStarted_message.title">
+			</div>	
+		</div>
+		
+		<div class="control-group" title="{{ _('Content of Print Started notification email') }}">
+			<label class="control-label">{{ _('Body') }}</label>
+			<div class="controls">
+				<textarea class="form-control input-block-level" rows="3" data-bind="value: settings.plugins.emailnotifier.printStarted_message.body"></textarea>
+			</div>
+		</div>
+
+	<h5>{{ _('Print Done') }}</h5>
+
+		<div class="control-group" title="{{ _('Subject of Print Complete notification email.') }}">
+			<label class="control-label">{{ _('Title') }}</label>
+			<div class="controls">
+				<input type="text" class="input-block-level" data-bind="value: settings.plugins.emailnotifier.printDone_message.title">
+			</div>	
+		</div>
+		
+		<div class="control-group" title="{{ _('Content of Print Complete notification email') }}">
+			<label class="control-label">{{ _('Body') }}</label>
+			<div class="controls">
+				<textarea class="form-control input-block-level" rows="3" data-bind="value: settings.plugins.emailnotifier.printDone_message.body"></textarea>
+			</div>
+		</div>
+
+	<h5>{{ _('Print Cancelled/Failed') }}</h5>
+
+		<div class="control-group" title="{{ _('Subject of Print Cancelled notification email.') }}">
+			<label class="control-label">{{ _('Title') }}</label>
+			<div class="controls">
+				<input type="text" class="input-block-level" data-bind="value: settings.plugins.emailnotifier.printCancelled_message.title">
+			</div>	
+		</div>
+		
+		<div class="control-group" title="{{ _('Content of Print Cancelled notification email') }}">
+			<label class="control-label">{{ _('Body') }}</label>
+			<div class="controls">
+				<textarea class="form-control input-block-level" rows="3" data-bind="value: settings.plugins.emailnotifier.printCancelled_message.body"></textarea>
+			</div>
+		</div>
+
+	<div class="control-group">
+		<div class="controls" title="{{ _('If checked, an image from the webcam will be attached to the email.') }}">
+			<label class="checkbox">
+				<input type="checkbox" data-bind="checked: settings.plugins.emailnotifier.include_snapshot" /> {{ _('Attach snapshot') }}
+			</label>
+		</div>
+	</div>
+	
+</form>
